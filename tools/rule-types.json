@@ -193,6 +193,7 @@
     "no-ternary": "suggestion",
     "no-this-before-super": "problem",
     "no-throw-literal": "suggestion",
+    "no-throw-onerror": "problem",
     "no-trailing-spaces": "layout",
     "no-undef": "problem",
     "no-undef-init": "suggestion",
