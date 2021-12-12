@@ -198,6 +198,7 @@ rules:
     no-shadow: "error"
     no-tabs: "error"
     no-throw-literal: "error"
+    no-throw-onerror: "error"
     no-trailing-spaces: "error"
     no-undef: ["error", {typeof: true}] # Modified from recommended
     no-undef-init: "error"

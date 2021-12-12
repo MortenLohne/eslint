@@ -47,7 +47,7 @@ ruleTester.run("no-throw-onerror", rule, {
                     experimentalObjectRestSpread: true
                 }
             },
-            errors: [{ messageId: "avoidThrow", type: "problem" }]
+            errors: [{ messageId: "avoidThrow" }]
         }
     ]
 });
