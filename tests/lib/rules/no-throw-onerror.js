@@ -75,6 +75,20 @@ ruleTester.run("no-throw-onerror", rule, {
                 }
             },
             errors: [{ messageId: "avoidThrow" }]
+        },
+        {
+            code: "const onError = function({ state, error }) {\n" +
+            "if (error) { throw error };\n" +
+            "return { patch: [{ op: \"replace\", path: \"error\", value: error }] };\n" +
+            "};",
+            options: [],
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            },
+            errors: [{ messageId: "avoidThrow" }]
         }
     ]
 });
