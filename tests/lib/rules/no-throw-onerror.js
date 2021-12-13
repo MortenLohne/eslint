@@ -31,12 +31,39 @@ ruleTester.run("no-throw-onerror", rule, {
                     experimentalObjectRestSpread: true
                 }
             }
+        },
+        {
+            code: "var throwError = ({ state, error }) => {\n" +
+            "if (error) { throw error };\n" +
+            "return { patch: [{ op: \"replace\", path: \"error\", value: error }] };\n" +
+            "};",
+            options: [],
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            }
         }
     ],
 
     invalid: [
         {
             code: "var onError = ({ state, error }) => {\n" +
+            "if (error) { throw error };\n" +
+            "return { patch: [{ op: \"replace\", path: \"error\", value: error }] };\n" +
+            "};",
+            options: [],
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            },
+            errors: [{ messageId: "avoidThrow" }]
+        },
+        {
+            code: "function onError({ state, error }) {\n" +
             "if (error) { throw error };\n" +
             "return { patch: [{ op: \"replace\", path: \"error\", value: error }] };\n" +
             "};",
