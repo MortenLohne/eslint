@@ -20,14 +20,47 @@ const ruleTester = new RuleTester();
 
 ruleTester.run("correct-service-execute-type", rule, {
     valid: [
-
-    // give me some code that won't trigger a warning
+        {
+            code: "var executeLegal = ({ meta, x, state }) => { return null; }",
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            }
+        }
     ],
 
     invalid: [
         {
-            code: "execute: async (input) => { return; }",
-            errors: [{ message: "Fill me in.", type: "Me too" }]
+            code: "var execute = (input) => { return null; }",
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            },
+            errors: [{ messageId: "incorrectServiceExecuteType" }]
+        },
+        {
+            code: "var execute = ({ meta, x, state }) => { return null; }",
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            },
+            errors: [{ messageId: "incorrectServiceExecuteType" }]
+        },
+        {
+            code: "var execute = (meta, x, state) => { return null; }",
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            },
+            errors: [{ messageId: "incorrectHandlerArity" }]
         }
     ]
 });

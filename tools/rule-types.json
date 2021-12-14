@@ -22,6 +22,7 @@
     "consistent-return": "suggestion",
     "consistent-this": "suggestion",
     "constructor-super": "problem",
+    "correct-service-execute-type": "problem",
     "curly": "suggestion",
     "default-case": "suggestion",
     "default-case-last": "suggestion",
